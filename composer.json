@@ -15,6 +15,6 @@
 		"issues": "https://github.com/Zauberfisch/silverstripe-persistent-dataobject/issues"
 	},
 	"require": {
-		"silverstripe/framework": "^3"
+		"silverstripe/framework": "^3.6"
 	}
 }
