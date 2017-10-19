@@ -29,7 +29,7 @@ class PersistentDataObject_Model_DataObject extends \DataObject {
 			new TabSet('Root'),
 		]);
 		$return->addFieldsToTab('Root', [
-			new Tab('Main', _t(self::class . '.MainTab', 'Main')),
+			new Tab('Main', _t('PersistentDataObject_Model_DataObject.MainTab', 'Main')),
 		]);
 		$s = new FormScaffolder($this);
 		$return->addFieldsToTab('Root.Main', $s->getFieldList()->toArray());
