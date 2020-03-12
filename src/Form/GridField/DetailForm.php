@@ -10,7 +10,7 @@ class DetailForm extends \GridFieldDetailForm {
 			'version-group/$VersionGroupID/item/$ID' => 'handleVersionedItem',
 		], parent::getURLHandlers($gridField));
 	}
-	
+
 	/**
 	 * @param \GridField $gridField
 	 * @param \SS_HTTPRequest $request
@@ -21,10 +21,10 @@ class DetailForm extends \GridFieldDetailForm {
 		// It could also give us a RequestHandler in the form of GridFieldDetailForm_ItemRequest if this is a
 		// nested GridField.
 		$requestHandler = $gridField->getForm()->getController();
-		
+
 		$versionedID = $request->param('VersionGroupID');
 		$id = $request->param('ID');
-		
+
 		if ($versionedID && is_numeric($versionedID)) {
 			/** @var \DataList $list */
 			$list = $gridField->getList();
@@ -36,13 +36,13 @@ class DetailForm extends \GridFieldDetailForm {
 				$record = $list->filter('VersionGroupLatest', true)->first();
 			}
 		} else {
-			$record = \Object::create($gridField->getModelClass());
+			$record = \SS_Object::create($gridField->getModelClass());
 		}
 		$class = $this->getItemRequestClass();
 		/** @var DetailForm_ItemRequest $handler */
-		$handler = \Object::create($class, $gridField, $this, $record, $requestHandler, $this->name);
+		$handler = \SS_Object::create($class, $gridField, $this, $record, $requestHandler, $this->name);
 		$handler->setTemplate($this->template);
-		
+
 		// if no validator has been set on the GridField and the record has a CMS validator, use that.
 		if (!$this->getValidator()
 			&& (
@@ -55,5 +55,5 @@ class DetailForm extends \GridFieldDetailForm {
 		}
 		return $handler->handleRequest($request, \DataModel::inst());
 	}
-	
+
 }
