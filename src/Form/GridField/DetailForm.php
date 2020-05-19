@@ -47,7 +47,7 @@ class DetailForm extends \GridFieldDetailForm {
 		if (!$this->getValidator()
 			&& (
 				method_exists($record, 'getCMSValidator')
-				|| $record instanceof \Object && $record->hasMethod('getCMSValidator')
+				|| $record instanceof \SS_Object && $record->hasMethod('getCMSValidator')
 			)
 		) {
 			/** @noinspection PhpUndefinedMethodInspection */
